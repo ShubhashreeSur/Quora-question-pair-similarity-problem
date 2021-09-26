@@ -50,7 +50,7 @@ Did some basic analysis and visualizations to answer a few questions like:
 - To check if some of the features are useful or not (using violin plots, pair plots, pdfs)
 
 #### 3.2 Basic feature extraction
-We contructed some basic features like:
+Constructed some basic features like:
 - freq_qid1 = Frequency of qid1's
 - freq_qid2 = Frequency of qid2's
 - q1len = Length of q1
@@ -73,41 +73,59 @@ Features:
 - cwc_min : Ratio of common_word_count to min lenghth of word count of Q1 and Q2<br/>
 cwc_min = common_word_count / (min(len(q1_words), len(q2_words))
 
-- cwc_max : Ratio of common_word_count to max lenghth of word count of Q1 and Q2
+- cwc_max : Ratio of common_word_count to max lenghth of word count of Q1 and Q2<br/>
 cwc_max = common_word_count / (max(len(q1_words), len(q2_words))
 
-- csc_min : Ratio of common_stop_count to min lenghth of stop count of Q1 and Q2
+- csc_min : Ratio of common_stop_count to min lenghth of stop count of Q1 and Q2<br/>
 csc_min = common_stop_count / (min(len(q1_stops), len(q2_stops))
 
-- csc_max : Ratio of common_stop_count to max lenghth of stop count of Q1 and Q2
+- csc_max : Ratio of common_stop_count to max lenghth of stop count of Q1 and Q2<br/>
 csc_max = common_stop_count / (max(len(q1_stops), len(q2_stops))
 
-- ctc_min : Ratio of common_token_count to min lenghth of token count of Q1 and Q2
+- ctc_min : Ratio of common_token_count to min lenghth of token count of Q1 and Q2<br/>
 ctc_min = common_token_count / (min(len(q1_tokens), len(q2_tokens))
 
-- ctc_max : Ratio of common_token_count to max lenghth of token count of Q1 and Q2
+- ctc_max : Ratio of common_token_count to max lenghth of token count of Q1 and Q2<br/>
 ctc_max = common_token_count / (max(len(q1_tokens), len(q2_tokens))
 
-- last_word_eq : Check if First word of both questions is equal or not
+- last_word_eq : Check if First word of both questions is equal or not<br/>
 last_word_eq = int(q1_tokens[-1] == q2_tokens[-1])
 
-- first_word_eq : Check if First word of both questions is equal or not
+- first_word_eq : Check if First word of both questions is equal or not<br/>
 first_word_eq = int(q1_tokens[0] == q2_tokens[0])
 
-- abs_len_diff : Abs. length difference
+- abs_len_diff : Abs. length difference<br/>
 abs_len_diff = abs(len(q1_tokens) - len(q2_tokens))
 
-- mean_len : Average Token Length of both Questions
+- mean_len : Average Token Length of both Questions<br/>
 mean_len = (len(q1_tokens) + len(q2_tokens))/2
 
-- fuzz_ratio : <https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/>
+- fuzz_ratio : <http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/>
 
-- fuzz_partial_ratio : <https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/>
+- fuzz_partial_ratio : <http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/>
 
-- token_sort_ratio : <https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/>
+- token_sort_ratio : <http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/>
 
-- token_set_ratio : <https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/>
+- token_set_ratio : <http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/>
+
+Fuzzywuzzy features github: <https://github.com/seatgeek/fuzzywuzzy#usage>
 
 - longest_substr_ratio : Ratio of length longest common substring to min lenghth of token count of Q1 and Q2
 longest_substr_ratio = len(longest common substring) / (min(len(q1_tokens), len(q2_tokens))
+
+Used t-SNE to visualize the above features in a lower dimension and gain some conclusion whether the features extracted are somewhat useful or not.
+
+#### 3.4 Textual feature extraction
+- Extracted the tf-idf scores
+- To get the word2vec representation, used the pre-trained Glove model which is trained on wikipedia data
+- Converted each question to average weighted word2vector by the tf-idf score
+
+
+## 4. Machine Learning Models and their evaluation
+
+#### 4.1 ML models
+
+
+
+#### 4.2 Evaluation of models
 
