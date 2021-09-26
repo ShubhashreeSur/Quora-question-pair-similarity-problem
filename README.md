@@ -70,7 +70,7 @@ Some terms:
 - Word : A token that is not a stop_word
 
 Features:
-- cwc_min : Ratio of common_word_count to min lenghth of word count of Q1 and Q2</n>
+- cwc_min : Ratio of common_word_count to min lenghth of word count of Q1 and Q2<br/>
 cwc_min = common_word_count / (min(len(q1_words), len(q2_words))
 
 - cwc_max : Ratio of common_word_count to max lenghth of word count of Q1 and Q2
